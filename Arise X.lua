@@ -138,7 +138,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             Description = "Target Distance",
             Default = 15,
             Min = 0,
-            Max = 60,
+            Max = 61,
             Rounding = .1,
             Callback = function(Value)
                 targetdis = Value
