@@ -522,7 +522,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "SoloWorld"
                     },
-                    [2] = "\t" or "\n"
+                    [2] = "\n"
                 }
             }
             
@@ -540,7 +540,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "OPWorld"
                     },
-                    [2] = "\t" or "\n"
+                    [2] = "\n"
                 }
             }
     
@@ -558,7 +558,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "NarutoWorld"
                     },
-                    [2] = "\t" or "\n"
+                    [2] = "\n"
                 }
             }
     
@@ -576,7 +576,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "BleachWorld"
                     },
-                    [2] = "\t" or "\n"
+                    [2] = "\n"
                 }
             }
     
@@ -594,7 +594,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "BCWorld"
                     },
-                    [2] = "\t" or "\n"
+                    [2] = "\n"
                 }
             }
     
