@@ -148,6 +148,17 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
     end
 
+    function pettp(x)
+        local playerid = player.LocalPlayer.UserId
+        for i,v in pairs(workspace.__Main.__Pets[tonumber(playerid)]:GetDescendants()) do
+            if v:isA("BasePart") then
+                v.CFrame = CFrame.new(x.CFrame)
+            end
+        end
+    end
+
+
+
     ----------------------
 
     local Tabs = {
@@ -258,8 +269,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                         if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
                             local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
                             local speed = dis/100
+                            pettp(v.HumanoidRootPart)
                             tween(v.HumanoidRootPart,speed)
-                            repeat wait() tween(v.HumanoidRootPart,speed) ; local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" 
+                            repeat wait() tween(v.HumanoidRootPart,speed) ; local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or _G.tpmon == false 
                         end
                     end
                 end
@@ -299,8 +311,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                         if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
                             local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
                             local speed = dis/80
+                            pettp(v.HumanoidRootPart)
                             tween(v.HumanoidRootPart,speed)
-                            repeat wait() tween(v.HumanoidRootPart,speed) ; local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; human.Sit = false   until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" 
+                            repeat wait() tween(v.HumanoidRootPart,speed) ; local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; human.Sit = false   until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or _G.dungeon == false 
                         end
                     end
                 end
