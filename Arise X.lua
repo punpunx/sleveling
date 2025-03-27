@@ -21,7 +21,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     ------ anti afk
     local GC = getconnections or get_signal_cons
 	if GC then
-		for i,v in pairs(GC(Players.LocalPlayer.Idled)) do
+		for i,v in pairs(GC(player.LocalPlayer.Idled)) do
 			if v["Disable"] then
 				v["Disable"](v)
 			elseif v["Disconnect"] then
@@ -30,7 +30,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 		end
 	else
 		local VirtualUser = cloneref(game:GetService("VirtualUser"))
-		Players.LocalPlayer.Idled:Connect(function()
+		player.LocalPlayer.Idled:Connect(function()
 			VirtualUser:CaptureController()
 			VirtualUser:ClickButton2(Vector2.new())
 		end)
@@ -202,7 +202,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             while _G.click do wait()
                 pcall(function()
                  click()
-                end
+                end)
             end
         end)
 
@@ -273,7 +273,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         while _G.gems do wait(.5)
             pcall(function()
                 gems()
-            end
+            end)
         end
     end)
 
