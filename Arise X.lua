@@ -77,6 +77,10 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         end
     end
 
+    function tphuman(x)
+        char:SetPrimaryPartCFrame(x.CFrame)
+    end
+
     function attackEnemy(v, vv)
         local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
         if dis < 20 then
@@ -213,7 +217,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                             local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
                             local speed = dis/100
                             tween(v.HumanoidRootPart,speed)
-                            repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ;tp(v.HumanoidRootPart.Position) until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or not _G.tpmon
+                            repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ;tphuman(v.HumanoidRootPart) until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or not _G.tpmon
                         end
                     end
                 end
@@ -245,7 +249,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                             local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
                             local speed = dis/80
                             tween(v.HumanoidRootPart,speed)
-                            repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; tp(v.HumanoidRootPart.Position) until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or not not _G.dungeon
+                            repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; tphuman(v.HumanoidRootPart) until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or not not _G.dungeon
                         end
                     end
                 end
