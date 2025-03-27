@@ -213,7 +213,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                             local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
                             local speed = dis/100
                             tween(v.HumanoidRootPart,speed)
-                            repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP"
+                            repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ;tp(v.HumanoidRootPart.Position) until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or not _G.tpmon
                         end
                     end
                 end
@@ -287,7 +287,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                                 }
                                 
                                 game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
-                                repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > 8
+                                repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; tp(v.HumanoidRootPart.Position) until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > 8 or not _G.targett ;
                             end
                         end
                     end
