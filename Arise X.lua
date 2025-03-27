@@ -55,7 +55,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     end
 
     function gems()
-        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+        for i,v in pairs(workspace.__Main.__Enemies.Client:GetDescendants()) do
             if v:isA("ProximityPrompt") and v.Name == "DestroyPrompt" then
                 v.MaxActivationDistance = math.huge
                 wait()
