@@ -132,7 +132,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         end)
 
-        targetdis = 15
+        
         local mondis = Tabs.Main:AddSlider("Slider", {
             Title = "Distance :",
             Description = "Target Distance",
@@ -144,7 +144,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                 targetdis = Value
             end
         })
-
+        targetdis = 15
     local autotarget = Tabs.Main:AddToggle("targ", {Title = "Auto-Target", Default = false })
 
     autotarget:OnChanged(function()
