@@ -14,15 +14,13 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         MinimizeKey = Enum.KeyCode.LeftControl
     })
 
-
-
     player = game.Players
     char = player.LocalPlayer.Character
     human = char.Humanoid
     rootpart = char.HumanoidRootPart
 
+    ----------------------- Function
 
-    -----------------------
     function click()
         for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
             if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
