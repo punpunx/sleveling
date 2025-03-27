@@ -18,7 +18,23 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     char = player.LocalPlayer.Character
     human = char.Humanoid
     rootpart = char.HumanoidRootPart
-
+    ------ anti afk
+    local GC = getconnections or get_signal_cons
+	if GC then
+		for i,v in pairs(GC(Players.LocalPlayer.Idled)) do
+			if v["Disable"] then
+				v["Disable"](v)
+			elseif v["Disconnect"] then
+				v["Disconnect"](v)
+			end
+		end
+	else
+		local VirtualUser = cloneref(game:GetService("VirtualUser"))
+		Players.LocalPlayer.Idled:Connect(function()
+			VirtualUser:CaptureController()
+			VirtualUser:ClickButton2(Vector2.new())
+		end)
+	end
     ----------------------- Function
 
     function click()
@@ -72,7 +88,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             local tweenInfo = TweenInfo.new(y)
             local tween = TweenService:Create(char.PrimaryPart, tweenInfo, {CFrame = x.CFrame * CFrame.new(0,0,5)})
             tween:Play()
-            tween.Completed
+            tween.Completed()
         end
     end
 
@@ -184,7 +200,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         autoclick:OnChanged(function()
             _G.click = Options.atclick.Value
             while _G.click do wait()
-                click()
+                pcall(function()
+                 click()
+                end
             end
         end)
 
@@ -206,32 +224,34 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     autotarget:OnChanged(function()
         _G.target = Options.targ.Value
             while _G.target do wait()
-                for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
-                    for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
-                        if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
-                            local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
-                            if dis < targetdis then
-                                wait(0.5)
-                                local args = {
-                                    [1] = {
+                pcall(function()
+                    for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                            if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                                local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                                if dis < targetdis then
+                                    wait(0.5)
+                                    local args = {
                                         [1] = {
-                                            ["PetPos"] = {
-                                                [pet] = v.HumanoidRootPart.Position
+                                            [1] = {
+                                                ["PetPos"] = {
+                                                    [pet] = v.HumanoidRootPart.Position
+                                                },
+                                                ["AttackType"] = "All",
+                                                ["Event"] = "Attack",
+                                                ["Enemy"] = v.Name
                                             },
-                                            ["AttackType"] = "All",
-                                            ["Event"] = "Attack",
-                                            ["Enemy"] = v.Name
-                                        },
-                                        [2] = "\t"
+                                            [2] = "\t"
+                                        }
                                     }
-                                }
-                                
-                                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
-                                repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > targetdis
+                                    
+                                    game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
+                                    repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > targetdis
+                                end
                             end
                         end
                     end
-                end
+                end)
             end
     end)
 
@@ -240,7 +260,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     autoarise:OnChanged(function()
         _G.arise = Options.arisee.Value
         while _G.arise do wait(.5)
-            arise()
+            pcall(function()
+              arise()
+            end)
         end
     end)
 
@@ -249,7 +271,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     autodes:OnChanged(function()
         _G.gems = Options.dess.Value
         while _G.gems do wait(.5)
-            gems()
+            pcall(function()
+                gems()
+            end
         end
     end)
 
@@ -262,7 +286,8 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         
     tpmob:OnChanged(function()
         _G.tpmon = Options.tpmonn.Value
-            while _G.tpmon do wait(.5)
+        while _G.tpmon do wait(.5)
+            pcall(function()
                 for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
                     for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
                         if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
@@ -270,11 +295,11 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                             local speed = dis/100
                             pettp(v.HumanoidRootPart)
                             tween(v.HumanoidRootPart,speed)
-                            repeat wait() tween(v.HumanoidRootPart,speed) ; local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or _G.tpmon == false 
                         end
                     end
                 end
-            end
+            end)
+        end
     end)
 
 
@@ -305,17 +330,18 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         autodun:OnChanged(function()
             _G.dungeon = Options.autodung.Value
             while _G.dungeon do wait()
-                for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
-                    for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
-                        if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
-                            local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
-                            local speed = dis/80
-                            pettp(v.HumanoidRootPart)
-                            tween(v.HumanoidRootPart,speed)
-                            repeat wait() tween(v.HumanoidRootPart,speed) ; local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; human.Sit = false   until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" or _G.dungeon == false 
+                pcall(function()
+                    for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                            if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                                local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                                local speed = dis/80
+                                pettp(v.HumanoidRootPart)
+                                tween(v.HumanoidRootPart,speed)
+                            end
                         end
                     end
-                end
+                end)
             end
         end)
 
@@ -324,7 +350,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         atk:OnChanged(function()
             _G.clk = Options.atc.Value
             while _G.clk do wait()
-                click()
+                pcall(function()
+                    click()
+                end)
             end
         end)
 
@@ -333,32 +361,34 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         att:OnChanged(function()
         _G.targett = Options.targg.Value
             while _G.targett do wait()
-                for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
-                    for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
-                        if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
-                            local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
-                            if dis < 8 then
-                                wait(0.5)
-                                local args = {
-                                    [1] = {
+                pcall(function()
+                    for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                            if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                                local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                                if dis < 8 then
+                                    wait(0.5)
+                                    local args = {
                                         [1] = {
-                                            ["PetPos"] = {
-                                                [pet] = v.HumanoidRootPart.Position
+                                            [1] = {
+                                                ["PetPos"] = {
+                                                    [pet] = v.HumanoidRootPart.Position
+                                                },
+                                                ["AttackType"] = "All",
+                                                ["Event"] = "Attack",
+                                                ["Enemy"] = v.Name
                                             },
-                                            ["AttackType"] = "All",
-                                            ["Event"] = "Attack",
-                                            ["Enemy"] = v.Name
-                                        },
-                                        [2] = "\t"
+                                            [2] = "\t"
+                                        }
                                     }
-                                }
-                                
-                                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
-                                repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > 8
+                                    
+                                    game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
+                                    repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > 8
+                                end
                             end
                         end
                     end
-                end
+                end)
             end
     end)
 
@@ -367,7 +397,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     autoarisee:OnChanged(function()
         _G.arisee = Options.ariseee.Value
         while _G.arisee do wait()
-            arise()
+            pcall(function()
+                arise()
+            end)
         end
     end)
 
