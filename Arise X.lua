@@ -45,8 +45,8 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     end
 
     function arise()
-        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
-            if v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart:FindFirstChild("DestroyPrompt") and v.HumanoidRootPart:FindFirstChild("ArisePrompt") then
+        for i,v in pairs(workspace.__Main.__Enemies.Client:GetDescendants()) do
+            if v:isA("ProximityPrompt") and v.Name == "ArisePrompt" then
                 v.HumanoidRootPart.ArisePrompt.MaxActivationDistance = math.huge
                 wait()
                     fireproximityprompt(v.HumanoidRootPart.ArisePrompt)
@@ -56,7 +56,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
     function gems()
         for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
-            if v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart:FindFirstChild("DestroyPrompt") and v.HumanoidRootPart:FindFirstChild("ArisePrompt") then
+            if v:isA("ProximityPrompt") and v.Name == "DestroyPrompt" then
                 v.HumanoidRootPart.DestroyPrompt.MaxActivationDistance = math.huge
                 wait()
                 fireproximityprompt(v.HumanoidRootPart.DestroyPrompt)
@@ -300,8 +300,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     autoarisee:OnChanged(function()
         _G.arisee = Options.ariseee.Value
         while _G.arisee do wait()
-            arise()
-            wait()
             arise()
         end
     end)
