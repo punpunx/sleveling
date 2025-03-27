@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+if not game:GetService("CoreGui").ScreenGui and not game:GetService("CoreGui").ScreenGui:FindFirstChild("Frame") then
 local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
 local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
@@ -522,7 +523,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "SoloWorld"
                     },
-                    [2] = "\n"
+                    [2] = "\t" or "\n"
                 }
             }
             
@@ -540,7 +541,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "OPWorld"
                     },
-                    [2] = "\n"
+                    [2] = "\t" or "\n"
                 }
             }
     
@@ -558,7 +559,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "NarutoWorld"
                     },
-                    [2] = "\n"
+                    [2] = "\t" or "\n"
                 }
             }
     
@@ -576,7 +577,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "BleachWorld"
                     },
-                    [2] = "\n"
+                    [2] = "\t" or "\n"
                 }
             }
     
@@ -594,7 +595,7 @@ do
                         ["Event"] = "ChangeSpawn",
                         ["Spawn"] = "BCWorld"
                     },
-                    [2] = "\n"
+                    [2] = "\t" or "\n"
                 }
             }
     
@@ -631,6 +632,7 @@ Fluent:Notify({
 SaveManager:LoadAutoloadConfig()
 
 
+end
 
 KeepArise = true
 queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
