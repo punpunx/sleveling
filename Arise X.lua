@@ -106,6 +106,48 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         end
     end
 
+
+    function dungeonstart()
+        local args = {
+            [1] = {
+                [1] = {
+                    ["Type"] = "Gems",
+                    ["Event"] = "DungeonAction",
+                    ["Action"] = "BuyTicket"
+                },
+                [2] = "\n"
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+        
+        local args = {
+            [1] = {
+                [1] = {
+                    ["Event"] = "DungeonAction",
+                    ["Action"] = "Create"
+                },
+                [2] = "\n"
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+        
+        
+        local args = {
+            [1] = {
+                [1] = {
+                    ["Dungeon"] = 7302083002,
+                    ["Event"] = "DungeonAction",
+                    ["Action"] = "Start"
+                },
+                [2] = "\n"
+            }
+        }
+        
+        game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+    end
+
     ----------------------
 
     local Tabs = {
@@ -235,6 +277,15 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                         fireproximityprompt(v)
                         end 
                     end
+            end
+        })
+
+
+        Tabs.dg:AddButton({
+            Title = "Dungeon Start",
+            Description = "Instane Start",
+            Callback = function()
+                dungeonstart()
             end
         })
 
