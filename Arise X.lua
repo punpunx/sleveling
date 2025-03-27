@@ -72,7 +72,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         if char and char.PrimaryPart then
             local TweenService = game:GetService("TweenService")
             local tweenInfo = TweenInfo.new(y)
-            local tween = TweenService:Create(char.PrimaryPart, tweenInfo, {CFrame = x.CFrame * CFrame.new(0,0,5)})
+            local tween = TweenService:Create(char.PrimaryPart, tweenInfo, {CFrame = x.CFrame * CFrame.new(0,5,5)})
             tween:Play()
         end
     end
@@ -249,7 +249,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         })
 
     local tpmob = Tabs.Main:AddToggle("tpmonn", {Title = "Tp-Monster", Default = false })
-
+        
     tpmob:OnChanged(function()
         _G.tpmon = Options.tpmonn.Value
             while _G.tpmon do wait(.5)
@@ -297,6 +297,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                 for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
                     for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
                         if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                            if human and human.Sit then
+                                human.Sit = false 
+                            end
                             local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
                             local speed = dis/80
                             tween(v.HumanoidRootPart,speed)
