@@ -72,7 +72,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         if char and char.PrimaryPart then
             local TweenService = game:GetService("TweenService")
             local tweenInfo = TweenInfo.new(y)
-            local tween = TweenService:Create(char.PrimaryPart, tweenInfo, {CFrame = x.CFrame * CFrame.new(0,5,5)})
+            local tween = TweenService:Create(char.PrimaryPart, tweenInfo, {CFrame = x.CFrame * CFrame.new(0,10,5)})
             tween:Play()
         end
     end
