@@ -299,9 +299,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
     autoarisee:OnChanged(function()
         _G.arisee = Options.ariseee.Value
-        while _G.arisee do wait(.5)
-            arise()
-            wait()
+        while _G.arisee do wait()
             arise()
             wait()
             arise()
@@ -532,7 +530,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         })
         
         Tabs.setsp:AddButton({
-            Title = "One Piece",
+            Title = "One Piece | Brum",
             Description = nil,
             Callback = function()
                 local args = {
@@ -550,7 +548,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         })
         
         Tabs.setsp:AddButton({
-            Title = "Naruto",
+            Title = "Naruto | Grass",
             Description = nil,
             Callback = function()
                 local args = {
@@ -568,7 +566,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         })
         
         Tabs.setsp:AddButton({
-            Title = "Bleach",
+            Title = "Bleach | ???",
             Description = nil,
             Callback = function()
                 local args = {
@@ -586,7 +584,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         })
         
         Tabs.setsp:AddButton({
-            Title = "Black Clover",
+            Title = "Black Clover | Lucky",
             Description = nil,
             Callback = function()
                 local args = {
