@@ -152,7 +152,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         local playerid = player.LocalPlayer.UserId
         for i,v in pairs(workspace.__Main.__Pets[tonumber(playerid)]:GetDescendants()) do
             if v:isA("BasePart") then
-                v.CFrame = CFrame.new(x.CFrame)
+                v.CFrame = x.CFrame
             end
         end
     end
