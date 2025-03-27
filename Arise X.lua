@@ -46,7 +46,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
     function arise()
         for i,v in pairs(workspace.__Main.__Enemies.Client:GetDescendants()) do
-            if and v:isA("ProximityPrompt") and v.Name == "ArisePrompt" then
+            if v:isA("ProximityPrompt") and v.Name == "ArisePrompt" then
                 v.MaxActivationDistance = math.huge
                 wait()
                     fireproximityprompt(v)
