@@ -297,13 +297,10 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                 for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
                     for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
                         if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
-                            if human and human.Sit then
-                                human.Sit = false 
-                            end
                             local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
                             local speed = dis/80
                             tween(v.HumanoidRootPart,speed)
-                            repeat wait() tween(v.HumanoidRootPart,speed) ; local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ;  until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" 
+                            repeat wait() tween(v.HumanoidRootPart,speed) ; local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude ; human.Sit = false   until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP" 
                         end
                     end
                 end
