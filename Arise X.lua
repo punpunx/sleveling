@@ -13,7 +13,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         Theme = "Dark",
         MinimizeKey = Enum.KeyCode.LeftControl
     })
-
+--- variable
     player = game.Players
     char = player.LocalPlayer.Character
     human = char.Humanoid
