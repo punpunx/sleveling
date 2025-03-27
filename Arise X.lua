@@ -1,1 +1,645 @@
-do repeat wait();until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character  if  not game.CoreGui:FindFirstChild("ScreenGui") then local v0=loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))();local v1=loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))();local v2=loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))();local v3=v0:CreateWindow({Title="Arise Crossover"   .. " v.1.0" ,SubTitle="by Pixie",TabWidth=552 -(232 + 160) ,Size=UDim2.fromOffset(979 -399 ,1737 -(37 + 1240) ),Acrylic=true,Theme="Dark",MinimizeKey=Enum.KeyCode.LeftControl});player=game.Players;char=player.LocalPlayer.Character;human=char.Humanoid;rootpart=char.HumanoidRootPart;function click() for v33,v34 in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do if (v34.HumanoidRootPart and (v34.HealthBar.Main.Bar.Amount.Text~="0 HP")) then local v93=0 -0 ;local v94;while true do if (v93==(0 -0)) then v94=(rootpart.Position-v34.HumanoidRootPart.Position).Magnitude;if (v94<10) then local v132={[1]={[1 -0 ]={Event="PunchAttack",Enemy=v34.Name},[1 + 1 ]="\4"}};game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v132));end break;end end end end end function arise() for v35,v36 in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do if (v36.HumanoidRootPart:FindFirstChild("DestroyPrompt") and v36.HumanoidRootPart:FindFirstChild("ArisePrompt")) then local v95=0 -0 ;local v96;while true do if ((0 + 0)==v95) then v96=1474 -(1329 + 145) ;while true do if (v96==(972 -(140 + 831))) then fireproximityprompt(v36.HumanoidRootPart.ArisePrompt);break;end if (v96==(1850 -(1409 + 441))) then v36.HumanoidRootPart.ArisePrompt.MaxActivationDistance=math.huge;wait();v96=1;end end break;end end end end end function gems() for v37,v38 in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do if (v38.HumanoidRootPart:FindFirstChild("DestroyPrompt") and v38.HumanoidRootPart:FindFirstChild("ArisePrompt")) then local v97=718 -(15 + 703) ;while true do if (v97==1) then fireproximityprompt(v38.HumanoidRootPart.DestroyPrompt);break;end if (v97==(0 + 0)) then v38.HumanoidRootPart.DestroyPrompt.MaxActivationDistance=math.huge;wait();v97=1;end end end end end function tp(v11,v12,v13) char:SetPrimaryPartCFrame(CFrame.new(v11,v12,v13));end function tween(v14,v15) if (char and char.PrimaryPart) then local v75=0;local v76;local v77;local v78;while true do if (v75==1) then v78=v76:Create(char.PrimaryPart,v77,{CFrame=v14.CFrame * CFrame.new(438 -(262 + 176) ,0,5) });v78:Play();break;end if (v75==(1721 -(345 + 1376))) then local v111=0;while true do if (v111==(688 -(198 + 490))) then v76=game:GetService("TweenService");v77=TweenInfo.new(v15);v111=4 -3 ;end if (v111==(2 -1)) then v75=1207 -(696 + 510) ;break;end end end end end end function attackEnemy(v16,v17) local v18=0 -0 ;local v19;while true do if (v18==(1262 -(1091 + 171))) then v19=(rootpart.Position-v16.HumanoidRootPart.Position).Magnitude;if (v19<(4 + 16)) then local v112={[3 -2 ]={[3 -2 ]={PetPos={[v17]=v16.HumanoidRootPart.Position},AttackType="All",Event="Attack",Enemy=v16.Name},[376 -(123 + 251) ]="\t"}};game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v112));repeat local v125=0 -0 ;while true do if (v125==(698 -(208 + 490))) then wait();v19=(rootpart.Position-v16.HumanoidRootPart.Position).Magnitude;break;end end until (v16.HealthBar.Main.Bar.Amount.Text=="0 HP") or (v19>20)  end break;end end end local v8={Main=v3:AddTab({Title="Main",Icon=""}),dg=v3:AddTab({Title="Dungoen",Icon=""}),localps=v3:AddTab({Title="LocalPlayer",Icon=""}),tpisland=v3:AddTab({Title="Tp Island&Mountain",Icon=""}),setsp=v3:AddTab({Title="Set Spawn",Icon=""}),Settings=v3:AddTab({Title="Settings",Icon="settings"})};local v9=v0.Options;do v0:Notify({Title="Pixie",Content="Thank for Using",SubContent="------------",Duration=5});local v20=v8.Main:AddToggle("atclick",{Title="Auto-Click",Default=false});v20:OnChanged(function() local v39=0 + 0 ;local v40;while true do if (v39==(0 + 0)) then v40=836 -(660 + 176) ;while true do if (0==v40) then _G.click=v9.atclick.Value;while _G.click do local v133=0 + 0 ;while true do if ((202 -(14 + 188))==v133) then wait();click();break;end end end break;end end break;end end end);local v21=v8.Main:AddSlider("Slider",{Title="Distance :",Description="Target Distance",Default=690 -(534 + 141) ,Min=0,Max=61,Rounding=0.1,Callback=function(v41) targetdis=v41;end});targetdis=7 + 8 ;local v22=v8.Main:AddToggle("targ",{Title="Auto-Target",Default=false});v22:OnChanged(function() local v42=0;while true do if (v42==0) then _G.target=v9.targ.Value;while _G.target do local v113=0;while true do if ((0 + 0)==v113) then wait();for v138,v139 in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do for v146,v147 in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do if (v147.HumanoidRootPart and (v147.HealthBar.Main.Bar.Amount.Text~="0 HP")) then local v152=(rootpart.Position-v147.HumanoidRootPart.Position).Magnitude;if (v152<targetdis) then local v160=0 + 0 ;local v161;while true do if (v160==(0 -0)) then wait(0.5 -0 );v161={[2 -1 ]={[1 + 0 ]={PetPos={[v139]=v147.HumanoidRootPart.Position},AttackType="All",Event="Attack",Enemy=v147.Name},[2 + 0 ]="\t"}};v160=397 -(115 + 281) ;end if (v160==(2 -1)) then game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v161));repeat local v169=0 + 0 ;local v170;while true do if (0==v169) then wait();v170=(rootpart.Position-v147.HumanoidRootPart.Position).Magnitude;break;end end until (v147.HealthBar.Main.Bar.Amount.Text=="0 HP") or (v152>targetdis)  break;end end end end end end break;end end end break;end end end);local v23=v8.Main:AddToggle("arisee",{Title="Auto-Arise",Default=false});v23:OnChanged(function() local v43=0 -0 ;while true do if ((0 -0)==v43) then _G.arise=v9.arisee.Value;while _G.arise do local v114=867 -(550 + 317) ;while true do if ((0 -0)==v114) then wait(0.5 -0 );arise();break;end end end break;end end end);local v24=v8.Main:AddToggle("dess",{Title="Auto-Gems",Default=false});v24:OnChanged(function() local v44=0;local v45;while true do if (v44==(0 -0)) then v45=0;while true do if (v45==0) then _G.gems=v9.dess.Value;while _G.gems do local v134=285 -(134 + 151) ;while true do if (v134==0) then wait(1665.5 -(970 + 695) );gems();break;end end end break;end end break;end end end);v8.Main:AddParagraph({Title="Mons-Farm",Content=""});local v25=v8.Main:AddToggle("tpmonn",{Title="Tp-Monster",Default=false});v25:OnChanged(function() local v46=0 -0 ;while true do if (v46==(1990 -(582 + 1408))) then _G.tpmon=v9.tpmonn.Value;while _G.tpmon do local v115=0;while true do if (v115==0) then wait(0.5);for v140,v141 in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do for v148,v149 in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do if (v149.HumanoidRootPart and (v149.HealthBar.Main.Bar.Amount.Text~="0 HP")) then local v153=0 -0 ;local v154;local v155;while true do if (v153==(1 -0)) then tween(v149.HumanoidRootPart,v155);repeat local v166=0;local v167;while true do if (v166==0) then wait();v167=(rootpart.Position-v149.HumanoidRootPart.Position).Magnitude;break;end end until (v154<20) and (v149.HealthBar.Main.Bar.Amount.Text=="0 HP")  break;end if (v153==(0 -0)) then v154=(rootpart.Position-v149.HumanoidRootPart.Position).Magnitude;v155=v154/(1924 -(1195 + 629)) ;v153=1 -0 ;end end end end end break;end end end break;end end end);v8.dg:AddButton({Title="Dungeon",Description="Find Dungeon",Callback=function() for v79,v80 in pairs(workspace.__Main.__Dungeon:GetDescendants()) do if v80:isA("ProximityPrompt") then local v102=0;local v103;while true do if (v102==0) then v103=0;while true do if (v103==(241 -(187 + 54))) then v80.MaxActivationDistance=math.huge;fireproximityprompt(v80);break;end end break;end end end end end});local v26=v8.dg:AddToggle("autodung",{Title="Auto-Dungeon",Default=false});v26:OnChanged(function() local v47=780 -(162 + 618) ;while true do if (v47==(0 + 0)) then _G.dungeon=v9.autodung.Value;while _G.dungeon do wait();for v126,v127 in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do for v130,v131 in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do if (v131.HumanoidRootPart and (v131.HealthBar.Main.Bar.Amount.Text~="0 HP")) then local v142=0;local v143;local v144;local v145;while true do if (1==v142) then v145=nil;while true do if (v143==(0 + 0)) then local v163=0 -0 ;while true do if (v163==1) then v143=1 -0 ;break;end if (v163==(0 + 0)) then v144=(rootpart.Position-v131.HumanoidRootPart.Position).Magnitude;v145=v144/80 ;v163=1637 -(1373 + 263) ;end end end if (v143==1) then tween(v131.HumanoidRootPart,v145);repeat wait();local v168=(rootpart.Position-v131.HumanoidRootPart.Position).Magnitude;until (v144<(1020 -(451 + 549))) and (v131.HealthBar.Main.Bar.Amount.Text=="0 HP")  break;end end break;end if (v142==0) then v143=0 + 0 ;v144=nil;v142=1 -0 ;end end end end end end break;end end end);local v27=v8.dg:AddToggle("atc",{Title="Auto-Click",Default=false});v27:OnChanged(function() local v48=0 -0 ;while true do if (v48==(1384 -(746 + 638))) then _G.clk=v9.atc.Value;while _G.clk do local v116=0 + 0 ;while true do if (v116==0) then wait();click();break;end end end break;end end end);local v28=v8.dg:AddToggle("targg",{Title="Auto-Target",Default=false});v28:OnChanged(function() local v49=0 -0 ;while true do if ((341 -(218 + 123))==v49) then _G.targett=v9.targg.Value;while _G.targett do local v117=1581 -(1535 + 46) ;local v118;while true do if (v117==(0 + 0)) then v118=0;while true do if (v118==0) then wait();for v156,v157 in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do for v158,v159 in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do if (v159.HumanoidRootPart and (v159.HealthBar.Main.Bar.Amount.Text~="0 HP")) then local v164=0;local v165;while true do if (v164==0) then v165=(rootpart.Position-v159.HumanoidRootPart.Position).Magnitude;if (v165<(2 + 6)) then wait(560.5 -(306 + 254) );local v174={[1 + 0 ]={[1 -0 ]={PetPos={[v157]=v159.HumanoidRootPart.Position},AttackType="All",Event="Attack",Enemy=v159.Name},[1469 -(899 + 568) ]="\t"}};game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v174));repeat wait();local v176=(rootpart.Position-v159.HumanoidRootPart.Position).Magnitude;until (v159.HealthBar.Main.Bar.Amount.Text=="0 HP") or (v165>(6 + 2))  end break;end end end end end break;end end break;end end end break;end end end);local v29=v8.dg:AddToggle("ariseee",{Title="Auto-Arise",Default=false});v29:OnChanged(function() _G.arisee=v9.ariseee.Value;while _G.arisee do local v81=0 -0 ;while true do if (v81==(604 -(268 + 335))) then wait();arise();break;end if (v81==0) then wait();arise();v81=291 -(60 + 230) ;end end end end);v8.localps:AddButton({Title="No Prompt Cooldown",Description=nil,Callback=function() for v82,v83 in pairs(game.workspace:GetDescendants()) do if v83:isA("ProximityPrompt") then v83.HoldDuration=0;end end end});v8.localps:AddButton({Title="Max Distance Proximity",Description=nil,Callback=function() for v84,v85 in pairs(game.workspace:GetDescendants()) do if v85:isA("ProximityPrompt") then v85.MaxxActivationDistance=math.huge;end end end});v8.localps:AddButton({Title="Hop server",Description="Low Players Server",Callback=function() local v51=game:GetService("HttpService");local v52=game:GetService("TeleportService");local v53="https://games.roblox.com/v1/games/";local v54=game.PlaceId;local v55=v53   .. v54   .. "/servers/Public?sortOrder=Asc&limit=100" ;function ListServers(v86) local v87=572 -(426 + 146) ;local v88;while true do if (v87==0) then local v119=0 + 0 ;while true do if ((1456 -(282 + 1174))==v119) then v88=game:HttpGet(v55   .. ((v86 and ("&cursor="   .. v86)) or "") );return v51:JSONDecode(v88);end end end end end local v56,v57;repeat local v89=811 -(569 + 242) ;local v90;while true do if ((0 -0)==v89) then v90=ListServers(v57);v56=v90.data[1];v89=1 + 0 ;end if (v89==(1025 -(706 + 318))) then v57=v90.nextPageCursor;break;end end until v56 v52:TeleportToPlaceInstance(v54,v56.id,game.Players.LocalPlayer);end});v8.localps:AddButton({Title="Hop & Rejoin",Description="Many Players Server",Callback=function() local v58=0;local v59;local v60;while true do if (v58==0) then v59=game:GetService("TeleportService");v60=game:GetService("Players").LocalPlayer;v58=1252 -(721 + 530) ;end if ((1272 -(945 + 326))==v58) then v59:Teleport(game.PlaceId,v60);break;end end end});local v30=v8.localps:AddInput("Input",{Title="WalkSpeed",Default="",Placeholder="Type",Numeric=true,Finished=true,Callback=function(v61) human.WalkSpeed=v61;end});local v31=v8.localps:AddInput("Input",{Title="JumpPwer",Default="",Placeholder="Type",Numeric=true,Finished=true,Callback=function(v63) human.JumpPower=v63;end});v8.localps:AddButton({Title="Admin",Description="Infinite X",Callback=function() loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))();end});v8.tpisland:AddButton({Title="SoloWorld",Description=nil,Callback=function() tp(1443 -865 ,28,233 + 28 );end});v8.tpisland:AddButton({Title="OnePiece",Description=nil,Callback=function() tp( -2851,749 -(271 + 429) , -2011);end});v8.tpisland:AddButton({Title="Naruto",Description=nil,Callback=function() tp( -(3105 + 275),1530 -(1408 + 92) ,3343 -(461 + 625) );end});v8.tpisland:AddButton({Title="Bleach",Description=nil,Callback=function() tp(3930 -(993 + 295) ,3 + 42 , -(3816 -(418 + 753)));end});v8.tpisland:AddButton({Title="BlackClover",Description=nil,Callback=function() tp(198,15 + 24 ,4296);end});v8.tpisland:AddButton({Title="Jeju",Description=nil,Callback=function() tp(3852,7 + 53 ,3087);end});v8.tpisland:AddButton({Title="Safe Jeju",Description=nil,Callback=function() tp(3768,96 + 230 ,785 + 2319 );end});v8.tpisland:AddParagraph({Title="Mountain",Content=nil});v8.tpisland:AddButton({Title="M1",Description=nil,Callback=function() tp( -(6669 -(406 + 123)),1847 -(1749 + 20) ,1300 + 4172 );end});v8.tpisland:AddButton({Title="M2",Description=nil,Callback=function() tp( -(7191 -(1249 + 73)),29 + 52 ,1533 -(466 + 679) );end});v8.tpisland:AddButton({Title="M3",Description=nil,Callback=function() tp( -(13054 -7627),107, -(15719 -10223));end});v8.tpisland:AddButton({Title="M4",Description=nil,Callback=function() tp( -(2590 -(106 + 1794)),108, -(1125 + 2429));end});v8.tpisland:AddButton({Title="M5",Description=nil,Callback=function() tp(450,118,869 + 2566 );end});v8.tpisland:AddButton({Title="M6",Description=nil,Callback=function() tp(9536 -6306 ,210 -132 ,150 -(4 + 110) );end});v8.tpisland:AddButton({Title="M7",Description=nil,Callback=function() tp(4905 -(57 + 527) ,1546 -(41 + 1386) , -(4911 -(17 + 86)));end});v8.setsp:AddButton({Title="Solo World",Description=nil,Callback=function() local v65=0 + 0 ;local v66;while true do if (v65==(0 -0)) then v66={[1]={[1]={Event="ChangeSpawn",Spawn="SoloWorld"},[5 -3 ]="\n"}};game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v66));break;end end end});v8.setsp:AddButton({Title="One Piece | Brum",Description=nil,Callback=function() local v67=166 -(122 + 44) ;local v68;while true do if (0==v67) then v68={[1]={[1]={Event="ChangeSpawn",Spawn="OPWorld"},[2 -0 ]="\n"}};game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v68));break;end end end});v8.setsp:AddButton({Title="Naruto | Grass",Description=nil,Callback=function() local v69=0 -0 ;local v70;while true do if (v69==(0 + 0)) then v70={[1 + 0 ]={[1 -0 ]={Event="ChangeSpawn",Spawn="NarutoWorld"},[67 -(30 + 35) ]="\n"}};game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v70));break;end end end});v8.setsp:AddButton({Title="Bleach | ???",Description=nil,Callback=function() local v71=0;local v72;while true do if (v71==(0 + 0)) then v72={[1258 -(1043 + 214) ]={[3 -2 ]={Event="ChangeSpawn",Spawn="BleachWorld"},[1214 -(323 + 889) ]="\n"}};game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v72));break;end end end});v8.setsp:AddButton({Title="Black Clover | Lucky",Description=nil,Callback=function() local v73=0 -0 ;local v74;while true do if (v73==0) then v74={[581 -(361 + 219) ]={[321 -(53 + 267) ]={Event="ChangeSpawn",Spawn="BCWorld"},[2]="\n"}};game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(v74));break;end end end});end v1:SetLibrary(v0);v2:SetLibrary(v0);v1:IgnoreThemeSettings();v1:SetIgnoreIndexes({});v2:SetFolder("FluentScriptHub");v1:SetFolder("FluentScriptHub/Arise-Crossover");v2:BuildInterfaceSection(v8.Settings);v1:BuildConfigSection(v8.Settings);v3:SelectTab(1);v0:Notify({Title="Pixie Loaded Ui",Content="The script has been loaded.",Duration=2 + 6 });v1:LoadAutoloadConfig();KeepArise=true;queueteleport=(syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport) ;local v10=false;player.LocalPlayer.OnTeleport:Connect(function(v32) if (KeepArise and  not v10 and queueteleport) then local v91=413 -(15 + 398) ;local v92;while true do if (v91==(982 -(18 + 964))) then v92=0 -0 ;while true do if (0==v92) then v10=true;queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/punpunx/sleveling/refs/heads/main/Arise%20X.lua'))()");break;end end break;end end end end);end end
+repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
+if not game.CoreGui:FindFirstChild("ScreenGui") then
+    local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
+    local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
+    local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
+
+    local Window = Fluent:CreateWindow({
+        Title = "Arise Crossover" .. " v.1.0",
+        SubTitle = "by Pixie",
+        TabWidth = 160,
+        Size = UDim2.fromOffset(580, 460),
+        Acrylic = true, 
+        Theme = "Dark",
+        MinimizeKey = Enum.KeyCode.LeftControl
+    })
+
+
+
+    player = game.Players
+    char = player.LocalPlayer.Character
+    human = char.Humanoid
+    rootpart = char.HumanoidRootPart
+
+
+    -----------------------
+    function click()
+        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+            if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                if dis < 10 then
+                    local args = {
+                        [1] = {
+                            [1] = {
+                                ["Event"] = "PunchAttack",
+                                ["Enemy"] = v.Name
+                            },
+                            [2] = "\4"
+                        }
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+                end
+            end
+        end
+    end
+
+    function arise()
+        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+            if v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart:FindFirstChild("DestroyPrompt") and v.HumanoidRootPart:FindFirstChild("ArisePrompt") then
+                v.HumanoidRootPart.ArisePrompt.MaxActivationDistance = math.huge
+                wait()
+                    fireproximityprompt(v.HumanoidRootPart.ArisePrompt)
+            end
+        end 
+    end
+
+    function gems()
+        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+            if v:FindFirstChild("HumanoidRootPart") and v.HumanoidRootPart:FindFirstChild("DestroyPrompt") and v.HumanoidRootPart:FindFirstChild("ArisePrompt") then
+                v.HumanoidRootPart.DestroyPrompt.MaxActivationDistance = math.huge
+                wait()
+                fireproximityprompt(v.HumanoidRootPart.DestroyPrompt)
+            end
+        end 
+    end
+
+    function tp(x,y,z)
+        char:SetPrimaryPartCFrame(CFrame.new(x, y, z))
+    end
+
+    function tween(x,y)
+        if char and char.PrimaryPart then
+            local TweenService = game:GetService("TweenService")
+            local tweenInfo = TweenInfo.new(y)
+            local tween = TweenService:Create(char.PrimaryPart, tweenInfo, {CFrame = x.CFrame * CFrame.new(0,0,5)})
+            tween:Play()
+        end
+    end
+
+    function attackEnemy(v, vv)
+        local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+        if dis < 20 then
+            local args = {
+                [1] = {
+                    [1] = {
+                        ["PetPos"] = {
+                            [vv] = v.HumanoidRootPart.Position
+                        },
+                        ["AttackType"] = "All",
+                        ["Event"] = "Attack",
+                        ["Enemy"] = v.Name
+                    },
+                    [2] = "\t"
+                }
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
+            repeat 
+                wait() 
+                dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude 
+            until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > 20
+        end
+    end
+
+    ----------------------
+
+    local Tabs = {
+        Main = Window:AddTab({ Title = "Main", Icon = "" }),
+        dg = Window:AddTab({ Title = "Dungoen", Icon = "" }),
+        localps = Window:AddTab({ Title = "LocalPlayer", Icon = "" }),
+        tpisland = Window:AddTab({ Title = "Tp Island&Mountain", Icon = "" }),
+        setsp = Window:AddTab({ Title = "Set Spawn", Icon = "" }),
+        Settings = Window:AddTab({ Title = "Settings", Icon = "settings" })
+    }
+
+    local Options = Fluent.Options
+
+    do
+        Fluent:Notify({
+            Title = "Pixie",
+            Content = "Thank for Using",
+            SubContent = "------------", -- Optional
+            Duration = 5 -- Set to nil to make the notification not disappear
+        })
+
+        local autoclick = Tabs.Main:AddToggle("atclick", {Title = "Auto-Click", Default = false })
+
+        autoclick:OnChanged(function()
+            _G.click = Options.atclick.Value
+            while _G.click do wait()
+                click()
+            end
+        end)
+
+        
+        local mondis = Tabs.Main:AddSlider("Slider", {
+            Title = "Distance :",
+            Description = "Target Distance",
+            Default = 15,
+            Min = 0,
+            Max = 61,
+            Rounding = .1,
+            Callback = function(Value)
+                targetdis = Value
+            end
+        })
+        targetdis = 15
+    local autotarget = Tabs.Main:AddToggle("targ", {Title = "Auto-Target", Default = false })
+
+    autotarget:OnChanged(function()
+        _G.target = Options.targ.Value
+            while _G.target do wait()
+                for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                    for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                        if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                            local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                            if dis < targetdis then
+                                wait(0.5)
+                                local args = {
+                                    [1] = {
+                                        [1] = {
+                                            ["PetPos"] = {
+                                                [pet] = v.HumanoidRootPart.Position
+                                            },
+                                            ["AttackType"] = "All",
+                                            ["Event"] = "Attack",
+                                            ["Enemy"] = v.Name
+                                        },
+                                        [2] = "\t"
+                                    }
+                                }
+                                
+                                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
+                                repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > targetdis
+                            end
+                        end
+                    end
+                end
+            end
+    end)
+
+    local autoarise = Tabs.Main:AddToggle("arisee", {Title = "Auto-Arise", Default = false })
+
+    autoarise:OnChanged(function()
+        _G.arise = Options.arisee.Value
+        while _G.arise do wait(.5)
+            arise()
+        end
+    end)
+
+    local autodes = Tabs.Main:AddToggle("dess", {Title = "Auto-Gems", Default = false })
+
+    autodes:OnChanged(function()
+        _G.gems = Options.dess.Value
+        while _G.gems do wait(.5)
+            gems()
+        end
+    end)
+
+        Tabs.Main:AddParagraph({
+            Title = "Mons-Farm",
+            Content = ""
+        })
+
+    local tpmob = Tabs.Main:AddToggle("tpmonn", {Title = "Tp-Monster", Default = false })
+
+    tpmob:OnChanged(function()
+        _G.tpmon = Options.tpmonn.Value
+            while _G.tpmon do wait(.5)
+                for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                    for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                        if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                            local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                            local speed = dis/100
+                            tween(v.HumanoidRootPart,speed)
+                            repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP"
+                        end
+                    end
+                end
+            end
+    end)
+
+
+        Tabs.dg:AddButton({
+            Title = "Dungeon",
+            Description = "Find Dungeon",
+            Callback = function()
+                for i,v in pairs(workspace.__Main.__Dungeon:GetDescendants()) do
+                    if v:isA("ProximityPrompt") then
+                        v.MaxActivationDistance = math.huge
+                        fireproximityprompt(v)
+                        end 
+                    end
+            end
+        })
+
+        local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = false })
+
+        autodun:OnChanged(function()
+            _G.dungeon = Options.autodung.Value
+            while _G.dungeon do wait()
+                for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                    for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                        if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                            local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                            local speed = dis/80
+                            tween(v.HumanoidRootPart,speed)
+                            repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until  dis < 20 and v.HealthBar.Main.Bar.Amount.Text == "0 HP"
+                        end
+                    end
+                end
+            end
+        end)
+
+        local atk = Tabs.dg:AddToggle("atc", {Title = "Auto-Click", Default = false })
+
+        atk:OnChanged(function()
+            _G.clk = Options.atc.Value
+            while _G.clk do wait()
+                click()
+            end
+        end)
+
+        local att = Tabs.dg:AddToggle("targg", {Title = "Auto-Target", Default = false })
+
+        att:OnChanged(function()
+        _G.targett = Options.targg.Value
+            while _G.targett do wait()
+                for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                    for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                        if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                            local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                            if dis < 8 then
+                                wait(0.5)
+                                local args = {
+                                    [1] = {
+                                        [1] = {
+                                            ["PetPos"] = {
+                                                [pet] = v.HumanoidRootPart.Position
+                                            },
+                                            ["AttackType"] = "All",
+                                            ["Event"] = "Attack",
+                                            ["Enemy"] = v.Name
+                                        },
+                                        [2] = "\t"
+                                    }
+                                }
+                                
+                                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
+                                repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > 8
+                            end
+                        end
+                    end
+                end
+            end
+    end)
+
+    local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = false })
+
+    autoarisee:OnChanged(function()
+        _G.arisee = Options.ariseee.Value
+        while _G.arisee do wait()
+            arise()
+            wait()
+            arise()
+        end
+    end)
+
+        Tabs.localps:AddButton({
+            Title = "No Prompt Cooldown",
+            Description = nil,
+            Callback = function()
+                for i, v in pairs(game.workspace:GetDescendants()) do
+                    if v:isA("ProximityPrompt") then
+                    v.HoldDuration = 0 
+                    end
+                end
+            end
+        })
+        
+        Tabs.localps:AddButton({
+            Title = "Max Distance Proximity",
+            Description = nil,
+            Callback = function()
+                for i, v in pairs(game.workspace:GetDescendants()) do
+                    if v:isA("ProximityPrompt") then
+                    v.MaxxActivationDistance = math.huge
+                    end
+                end
+            end
+        })
+
+        Tabs.localps:AddButton({
+            Title = "Hop server",
+            Description = "Low Players Server",
+            Callback = function()
+                    local Http = game:GetService("HttpService")
+                    local TPS = game:GetService("TeleportService")
+                    local Api = "https://games.roblox.com/v1/games/"
+            
+                    local _place = game.PlaceId
+                    local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+                    function ListServers(cursor)
+                    local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+                    return Http:JSONDecode(Raw)
+                    end
+            
+                    local Server, Next; repeat
+                    local Servers = ListServers(Next)
+                    Server = Servers.data[1]
+                    Next = Servers.nextPageCursor
+                    until Server
+            
+                    TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+            end
+        })
+
+        Tabs.localps:AddButton({
+            Title = "Hop & Rejoin",
+            Description = "Many Players Server",
+            Callback = function()
+                local ts = game:GetService("TeleportService")
+                local p = game:GetService("Players").LocalPlayer
+                ts:Teleport(game.PlaceId, p)
+            end
+        })
+
+        local walkspeedinput = Tabs.localps:AddInput("Input", {
+            Title = "WalkSpeed",
+            Default = "",
+            Placeholder = "Type",
+            Numeric = true, 
+            Finished = true, 
+            Callback = function(Value)
+                human.WalkSpeed = Value
+            end
+        })
+        local jumppowerinput = Tabs.localps:AddInput("Input", {
+            Title = "JumpPwer",
+            Default = "",
+            Placeholder = "Type",
+            Numeric = true, 
+            Finished = true, 
+            Callback = function(Value)
+                human.JumpPower = Value
+            end
+        })
+
+        Tabs.localps:AddButton({
+            Title = "Admin",
+            Description = "Infinite X",
+            Callback = function()
+                loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+            end
+        })
+
+        Tabs.tpisland:AddButton({
+            Title = "SoloWorld",
+            Description = nil,
+            Callback = function()
+                tp(578, 28, 261)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "OnePiece",
+            Description = nil,
+            Callback = function()
+                tp(-2851, 49, -2011)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "Naruto",
+            Description = nil,
+            Callback = function()
+                tp(-3380, 30, 2257)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "Bleach",
+            Description = nil,
+            Callback = function()
+                tp(2642, 45, -2645)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "BlackClover",
+            Description = nil,
+            Callback = function()
+                tp(198, 39, 4296)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "Jeju",
+            Description = nil,
+            Callback = function()
+                tp(3852, 60, 3087)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "Safe Jeju",
+            Description = nil,
+            Callback = function()
+                tp(3768, 326, 3104)
+            end
+        })
+
+        Tabs.tpisland:AddParagraph({
+            Title = "Mountain",
+            Content = nil
+        })
+        Tabs.tpisland:AddButton({
+            Title = "M1",
+            Description = nil,
+            Callback = function()
+                tp(-6140, 78, 5472)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "M2",
+            Description = nil,
+            Callback = function()
+                tp(-5869, 81, 388)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "M3",
+            Description = nil,
+            Callback = function()
+                tp(-5427, 107, -5496)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "M4",
+            Description = nil,
+            Callback = function()
+                tp(-690, 108, -3554)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "M5",
+            Description = nil,
+            Callback = function()
+                tp(450, 118, 3435)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "M6",
+            Description = nil,
+            Callback = function()
+                tp(3230, 78, 36)
+            end
+        })
+        
+        Tabs.tpisland:AddButton({
+            Title = "M7",
+            Description = nil,
+            Callback = function()
+                tp(4321, 119, -4808)
+            end
+        })
+        
+        
+        Tabs.setsp:AddButton({
+            Title = "Solo World",
+            Description = nil,
+            Callback = function()
+                local args = {
+                    [1] = {
+                        [1] = {
+                            ["Event"] = "ChangeSpawn",
+                            ["Spawn"] = "SoloWorld"
+                        },
+                        [2] = "\n"
+                    }
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))          
+            end
+        })
+        
+        Tabs.setsp:AddButton({
+            Title = "One Piece | Brum",
+            Description = nil,
+            Callback = function()
+                local args = {
+                    [1] = {
+                        [1] = {
+                            ["Event"] = "ChangeSpawn",
+                            ["Spawn"] = "OPWorld"
+                        },
+                        [2] = "\n"
+                    }
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+            end
+        })
+        
+        Tabs.setsp:AddButton({
+            Title = "Naruto | Grass",
+            Description = nil,
+            Callback = function()
+                local args = {
+                    [1] = {
+                        [1] = {
+                            ["Event"] = "ChangeSpawn",
+                            ["Spawn"] = "NarutoWorld"
+                        },
+                        [2] = "\n"
+                    }
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+            end
+        })
+        
+        Tabs.setsp:AddButton({
+            Title = "Bleach | ???",
+            Description = nil,
+            Callback = function()
+                local args = {
+                    [1] = {
+                        [1] = {
+                            ["Event"] = "ChangeSpawn",
+                            ["Spawn"] = "BleachWorld"
+                        },
+                        [2] = "\n"
+                    }
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+            end
+        })
+        
+        Tabs.setsp:AddButton({
+            Title = "Black Clover | Lucky",
+            Description = nil,
+            Callback = function()
+                local args = {
+                    [1] = {
+                        [1] = {
+                            ["Event"] = "ChangeSpawn",
+                            ["Spawn"] = "BCWorld"
+                        },
+                        [2] = "\n"
+                    }
+                }
+        
+                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+            end
+        })
+        
+
+
+    end 
+    --------------------
+
+    SaveManager:SetLibrary(Fluent)
+    InterfaceManager:SetLibrary(Fluent)
+
+    SaveManager:IgnoreThemeSettings()
+
+    SaveManager:SetIgnoreIndexes({})
+
+    InterfaceManager:SetFolder("FluentScriptHub")
+    SaveManager:SetFolder("FluentScriptHub/Arise-Crossover")
+
+    InterfaceManager:BuildInterfaceSection(Tabs.Settings)
+    SaveManager:BuildConfigSection(Tabs.Settings)
+
+    Window:SelectTab(1)
+
+    Fluent:Notify({
+        Title = "Pixie Loaded Ui",
+        Content = "The script has been loaded.",
+        Duration = 8
+    })
+
+    SaveManager:LoadAutoloadConfig()
+
+
+
+    KeepArise = true
+    queueteleport = (syn and syn.queue_on_teleport) or queue_on_teleport or (fluxus and fluxus.queue_on_teleport)
+    local TeleportCheck = false
+    player.LocalPlayer.OnTeleport:Connect(function(State)
+        if KeepArise and (not TeleportCheck) and queueteleport then
+            TeleportCheck = true
+            queueteleport("loadstring(game:HttpGet('https://raw.githubusercontent.com/punpunx/sleveling/refs/heads/main/Arise%20X.lua'))()")
+        end
+    end)
+
+
+end
