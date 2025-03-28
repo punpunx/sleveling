@@ -404,14 +404,13 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         end)
 
-        local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = dgcheck() })
+        local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = false })
 
         autoarisee:OnChanged(function()
             _G.arisee = Options.ariseee.Value
             while _G.arisee do wait()
                 pcall(function()
                     arise()
-                    end
                 end)
             end
         end)
