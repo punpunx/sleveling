@@ -1,4 +1,4 @@
-repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer 
+repeat wait() until game:IsLoaded() and game.Players and game.Players.LocalPlayer and game.Players.LocalPlayer.Character
 if not game.CoreGui:FindFirstChild("ScreenGui") then
     local Fluent = loadstring(game:HttpGet("https://github.com/dawid-scripts/Fluent/releases/latest/download/main.lua"))()
     local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/SaveManager.lua"))()
@@ -13,7 +13,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         Theme = "Dark",
         MinimizeKey = Enum.KeyCode.LeftControl
     })
-    --- variable
+--- variable
     player = game.Players
     char = player.LocalPlayer.Character
     human = char.Humanoid
