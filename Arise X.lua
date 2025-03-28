@@ -423,26 +423,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         end
     })
 
-        if dgcheck() then
-            Options.autodung:SetValue(true)
-        end
-        if dgcheck() then
-            Options.atc:SetValue(true)
-        end
-        if dgcheck() then
-            Options.targg:SetValue(true)
-        end
-        if dgcheck() then
-            Options.ariseee:SetValue(true)
-        end
-
-
-
-
-
-    
-
-
         Tabs.localps:AddButton({
             Title = "No Prompt Cooldown",
             Description = nil,
@@ -741,6 +721,22 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
 
     end 
+
+    if dgcheck() then
+        Options.autodung:SetValue(true)
+    end
+    if dgcheck() then
+        Options.atc:SetValue(true)
+    end
+    if dgcheck() then
+        Options.targg:SetValue(true)
+    end
+    if dgcheck() then
+        Options.ariseee:SetValue(true)
+    end
+
+
+
     --------------------
 
     SaveManager:SetLibrary(Fluent)
