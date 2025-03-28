@@ -35,6 +35,14 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 			VirtualUser:ClickButton2(Vector2.new())
 		end)
 	end
+    
+    if workspace:FindFirstChild("__Main"):FindFirstChild("__World"):FindFirstChild("Room_1") then
+        dungauto = true
+    else
+        dungauto = false
+    end
+
+
     ----------------------- Function
 
     function click()
@@ -324,7 +332,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         })
 
-        local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = false })
+        local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = dungauto })
 
         autodun:OnChanged(function()
             _G.dungeon = Options.autodung.Value
@@ -344,7 +352,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         end)
 
-        local atk = Tabs.dg:AddToggle("atc", {Title = "Auto-Click", Default = false })
+        local atk = Tabs.dg:AddToggle("atc", {Title = "Auto-Click", Default = dungauto })
 
         atk:OnChanged(function()
             _G.clk = Options.atc.Value
@@ -355,7 +363,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         end)
 
-        local att = Tabs.dg:AddToggle("targg", {Title = "Auto-Target", Default = false })
+        local att = Tabs.dg:AddToggle("targg", {Title = "Auto-Target", Default = dungauto })
 
         att:OnChanged(function()
         _G.targett = Options.targg.Value
@@ -391,7 +399,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
     end)
 
-    local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = false })
+    local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = dungauto })
 
     autoarisee:OnChanged(function()
         _G.arisee = Options.ariseee.Value
