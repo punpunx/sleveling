@@ -428,7 +428,10 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
   
         dgrj:OnChanged(function()
             _G.drj = Options.dgrjj.Value
-            while _G.drj do wait()
+        end)
+
+        task.spawn(function()
+            while wait() do 
                 if string.match(dginfo,"Ends") then
                     dungeonstart()
                 end
