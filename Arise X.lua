@@ -185,7 +185,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
     function attackEnemies()
         if not rootpart then return end  
-        for _, pet in pairs(player.leaderstats.Equips.Pets:GetAttributes()) do
+        for _, pett in pairs(player.LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
             for _, enemy in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
                 if enemy:FindFirstChild("HumanoidRootPart") and enemy.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
                     local distance = (rootpart.Position - enemy.HumanoidRootPart.Position).Magnitude
@@ -197,7 +197,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                             [1] = {
                                 [1] = {
                                     ["PetPos"] = {
-                                        [pet] = enemy.HumanoidRootPart.Position
+                                        [pett] = enemy.HumanoidRootPart.Position
                                     },
                                     ["AttackType"] = "All",
                                     ["Event"] = "Attack",
@@ -400,6 +400,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                 if _G.dungeon ==  true then
                     click()
                     wait()
+                    attackEnemies()
                 end
             end
         end)
