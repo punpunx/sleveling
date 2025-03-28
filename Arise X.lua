@@ -388,16 +388,33 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                                 local speed = dis/80
                                 pettp(v.HumanoidRootPart)
                                 tween(v.HumanoidRootPart,speed)
-                                click()
-                                attackEnemies()
-                                arise()
                             end
                         end
                     end
                 end)
             end
         end)
+        
+        task.spawn(function()
+            while wait() do 
+                if _G.dungeon ==  true then
+                    click()
+                    wait()
+                end
+            end
+        end)
 
+        local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = dgcheck() })
+
+        autoarisee:OnChanged(function()
+            _G.arisee = Options.ariseee.Value
+            while _G.arisee do wait()
+                pcall(function()
+                    arise()
+                    end
+                end)
+            end
+        end)
 
         
     Tabs.dg:AddButton({
