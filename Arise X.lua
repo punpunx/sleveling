@@ -432,7 +432,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
         task.spawn(function()
             while wait() do 
-                if string.match(dginfo,"Ends") then
+                if _G.drj and string.match(dginfo,"Ends") then
                     dungeonstart()
                 end
             end
