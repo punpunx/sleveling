@@ -36,14 +36,17 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 		end)
 	end
     
-    if workspace:FindFirstChild("__Main"):FindFirstChild("__World"):FindFirstChild("Room_1") then
-        dungauto = true
-    else
-        dungauto = false
-    end
+    
 
 
     ----------------------- Function
+    function dgcheck()
+        if workspace:FindFirstChild("__Main"):FindFirstChild("__World"):FindFirstChild("Room_1") then
+            return true
+        else
+            return false
+        end
+    end
 
     function click()
         for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
@@ -332,7 +335,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         })
 
-        local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = dungauto })
+        local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = dgcheck() })
 
         autodun:OnChanged(function()
             _G.dungeon = Options.autodung.Value
@@ -352,7 +355,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         end)
 
-        local atk = Tabs.dg:AddToggle("atc", {Title = "Auto-Click", Default = dungauto })
+        local atk = Tabs.dg:AddToggle("atc", {Title = "Auto-Click", Default = dgcheck() })
 
         atk:OnChanged(function()
             _G.clk = Options.atc.Value
@@ -363,7 +366,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         end)
 
-        local att = Tabs.dg:AddToggle("targg", {Title = "Auto-Target", Default = dungauto })
+        local att = Tabs.dg:AddToggle("targg", {Title = "Auto-Target", Default = dgcheck() })
 
         att:OnChanged(function()
         _G.targett = Options.targg.Value
@@ -399,7 +402,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
     end)
 
-    local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = dungauto })
+    local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = dgcheck() })
 
     autoarisee:OnChanged(function()
         _G.arisee = Options.ariseee.Value
