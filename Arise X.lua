@@ -403,6 +403,18 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         end
     end)
 
+    Tabs.dg:AddButton({
+        Title = "Join Back",
+        Description = "Main Server",
+        Callback = function()
+            local TeleportService = game:GetService("TeleportService")
+            local placeId = 87039211657390 
+            TeleportService:Teleport(placeId, game.Players.LocalPlayer)
+        end
+    })
+    
+
+
         Tabs.localps:AddButton({
             Title = "No Prompt Cooldown",
             Description = nil,
