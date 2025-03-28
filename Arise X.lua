@@ -397,8 +397,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                                         pettp(v.HumanoidRootPart)
                                         tween(v.HumanoidRootPart,speed)
                                     end
-                                else
-                                    return end
                                 end
                             end
                         end
@@ -440,8 +438,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             while _G.drj do wait()
                 if string.match(dginfo,"Ends") then
                     dungeonstart()
-                    else
-                    return end
                 end
             end
         end)
