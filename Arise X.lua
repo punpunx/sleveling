@@ -334,83 +334,85 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                 dungeonstart()
             end
         })
+        pcall(function()
+            local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = dgcheck() })
 
-        local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = dgcheck() })
-
-        autodun:OnChanged(function()
-            _G.dungeon = Options.autodung.Value
-            while _G.dungeon do wait()
-                pcall(function()
-                    for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
-                        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
-                            if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
-                                local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
-                                local speed = dis/80
-                                pettp(v.HumanoidRootPart)
-                                tween(v.HumanoidRootPart,speed)
-                            end
-                        end
-                    end
-                end)
-            end
-        end)
-
-        local atk = Tabs.dg:AddToggle("atc", {Title = "Auto-Click", Default = dgcheck() })
-
-        atk:OnChanged(function()
-            _G.clk = Options.atc.Value
-            while _G.clk do wait()
-                pcall(function()
-                    click()
-                end)
-            end
-        end)
-
-        local att = Tabs.dg:AddToggle("targg", {Title = "Auto-Target", Default = dgcheck() })
-
-        att:OnChanged(function()
-        _G.targett = Options.targg.Value
-            while _G.targett do wait()
-                pcall(function()
-                    for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
-                        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
-                            if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
-                                local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
-                                if dis < 8 then
-                                    wait(0.5)
-                                    local args = {
-                                        [1] = {
-                                            [1] = {
-                                                ["PetPos"] = {
-                                                    [pet] = v.HumanoidRootPart.Position
-                                                },
-                                                ["AttackType"] = "All",
-                                                ["Event"] = "Attack",
-                                                ["Enemy"] = v.Name
-                                            },
-                                            [2] = "\t"
-                                        }
-                                    }
-                                    
-                                    game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
-                                    repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > 8
+            autodun:OnChanged(function()
+                _G.dungeon = Options.autodung.Value
+                while _G.dungeon do wait()
+                    pcall(function()
+                        for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                            for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                                if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                                    local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                                    local speed = dis/80
+                                    pettp(v.HumanoidRootPart)
+                                    tween(v.HumanoidRootPart,speed)
                                 end
                             end
                         end
-                    end
+                    end)
+                end
+            end)
+
+            local atk = Tabs.dg:AddToggle("atc", {Title = "Auto-Click", Default = dgcheck() })
+
+            atk:OnChanged(function()
+                _G.clk = Options.atc.Value
+                while _G.clk do wait()
+                    pcall(function()
+                        click()
+                    end)
+                end
+            end)
+
+            local att = Tabs.dg:AddToggle("targg", {Title = "Auto-Target", Default = dgcheck() })
+
+            att:OnChanged(function()
+            _G.targett = Options.targg.Value
+                while _G.targett do wait()
+                    pcall(function()
+                        for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                            for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                                if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                                    local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                                    if dis < 8 then
+                                        wait(0.5)
+                                        local args = {
+                                            [1] = {
+                                                [1] = {
+                                                    ["PetPos"] = {
+                                                        [pet] = v.HumanoidRootPart.Position
+                                                    },
+                                                    ["AttackType"] = "All",
+                                                    ["Event"] = "Attack",
+                                                    ["Enemy"] = v.Name
+                                                },
+                                                [2] = "\t"
+                                            }
+                                        }
+                                        
+                                        game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))    
+                                        repeat wait() local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude until v.HealthBar.Main.Bar.Amount.Text == "0 HP" or dis > 8
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                end
+        end)
+
+        local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = dgcheck() })
+
+        autoarisee:OnChanged(function()
+            _G.arisee = Options.ariseee.Value
+            while _G.arisee do wait()
+                pcall(function()
+                    arise()
                 end)
             end
-    end)
+        end)
 
-    local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = dgcheck() })
-
-    autoarisee:OnChanged(function()
-        _G.arisee = Options.ariseee.Value
-        while _G.arisee do wait()
-            pcall(function()
-                arise()
-            end)
-        end
     end)
 
     Tabs.dg:AddButton({
