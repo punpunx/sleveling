@@ -376,9 +376,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         })
 
         local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = false })
-        if dgcheck() then
-            Options.autodung:SetValue(true)
-            end
 
         autodun:OnChanged(function()
             _G.dungeon = Options.autodung.Value
@@ -417,10 +414,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
         local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = false })
 
-
-
-
-
         autoarisee:OnChanged(function()
             _G.arisee = Options.ariseee.Value
             while _G.arisee do wait()
@@ -442,6 +435,10 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             end
         end)
 
+        if dgcheck() then
+            Options.autodung:SetValue(true)
+            Options.dgrjj:SetValue(true)
+            end
 
     Tabs.dg:AddButton({
         Title = "Join Back",
