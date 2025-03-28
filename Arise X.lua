@@ -376,22 +376,34 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         })
 
         local autodun = Tabs.dg:AddToggle("autodung", {Title = "Auto-Dungeon", Default = false })
+        if dgcheck() then
+            Options.autodung:SetValue(true)
+            end
 
         autodun:OnChanged(function()
             _G.dungeon = Options.autodung.Value
-            while _G.dungeon do wait()
-                pcall(function()
-                    for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
-                        for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
-                            if v:FindFirstChild("HumanoidRootPart") and v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
-                                local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
-                                local speed = dis/80
-                                pettp(v.HumanoidRootPart)
-                                tween(v.HumanoidRootPart,speed)
+        end)
+
+        task.spawn(function()
+            while wait() do 
+                if _G.dungeon ==  true then
+                    pcall(function()
+                        for _, pet in pairs(game:GetService("Players").LocalPlayer.leaderstats.Equips.Pets:GetAttributes()) do
+                            for i,v in pairs(workspace.__Main.__Enemies.Client:GetChildren()) do
+                                if v:FindFirstChild("HumanoidRootPart") then
+                                    if v.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
+                                        local dis = (rootpart.Position - v.HumanoidRootPart.Position).Magnitude
+                                        local speed = dis/80
+                                        pettp(v.HumanoidRootPart)
+                                        tween(v.HumanoidRootPart,speed)
+                                    end
+                                else
+                                    return end
+                                end
                             end
                         end
-                    end
-                end)
+                    end)
+                end
             end
         end)
         
@@ -407,9 +419,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
         local autoarisee = Tabs.dg:AddToggle("ariseee", {Title = "Auto-Arise", Default = false })
 
-        if dgcheck()
-        Options.autodung:SetValue(true)
-        end
+
 
 
 
@@ -423,11 +433,16 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         end)
 
         local dgrj = Tabs.dg:AddToggle("dgrjj", {Title = "Auto-Rejoin-Dungeon", Default = false })
-
+        dginfo =  player.LocalPlayer.PlayerGui.Hud.UpContanier.DungeonInfo.Text
+  
         dgrj:OnChanged(function()
-            _G.arisee = Options.dgrjj.Value
-            while _G.arisee do wait()
-
+            _G.drj = Options.dgrjj.Value
+            while _G.drj do wait()
+                if string.match(dginfo,"Ends") then
+                    dungeonstart()
+                    else
+                    return end
+                end
             end
         end)
 
