@@ -423,26 +423,18 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         end
     })
 
-    task.spawn(function()
         if dgcheck() then
             Options.autodung:SetValue(true)
         end
-    end)
-    task.spawn(function()
         if dgcheck() then
             Options.atc:SetValue(true)
         end
-    end)
-    task.spawn(function()
         if dgcheck() then
             Options.targg:SetValue(true)
         end
-    end)
-    task.spawn(function()
         if dgcheck() then
             Options.ariseee:SetValue(true)
         end
-    end)
 
 
 
