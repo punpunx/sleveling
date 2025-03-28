@@ -722,20 +722,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
     end 
 
-    if dgcheck() then
-        Options.autodung:SetValue(true)
-    end
-    if dgcheck() then
-        Options.atc:SetValue(true)
-    end
-    if dgcheck() then
-        Options.targg:SetValue(true)
-    end
-    if dgcheck() then
-        Options.ariseee:SetValue(true)
-    end
-
-
 
     --------------------
 
@@ -761,6 +747,19 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
     })
 
     SaveManager:LoadAutoloadConfig()
+
+    if dgcheck() then
+        Options.autodung:SetValue(true)
+    end
+    if dgcheck() then
+        Options.atc:SetValue(true)
+    end
+    if dgcheck() then
+        Options.targg:SetValue(true)
+    end
+    if dgcheck() then
+        Options.ariseee:SetValue(true)
+    end
 
 
 
