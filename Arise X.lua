@@ -424,15 +424,16 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         end)
 
         local dgrj = Tabs.dg:AddToggle("dgrjj", {Title = "Auto-Rejoin-Dungeon", Default = false })
-        dginfo =  player.LocalPlayer.PlayerGui.Hud.UpContanier.DungeonInfo.Text
+        
   
         dgrj:OnChanged(function()
             _G.drj = Options.dgrjj.Value
         end)
-
         task.spawn(function()
             while wait() do 
+                local dginfo =  player.LocalPlayer.PlayerGui.Hud.UpContanier.DungeonInfo.Text
                 if _G.drj and string.match(dginfo,"Ends") then
+                    print("aaaa")
                     dungeonstart()
                 end
             end
