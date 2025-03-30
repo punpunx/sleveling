@@ -595,6 +595,22 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                 tp(198, 39, 4296)
             end
         })
+
+        
+        Tabs.tpisland:AddButton({
+            Title = "jojo",
+            Description = nil,
+            Callback = function()
+                tp(4816, 30, -120)
+            end
+        })
+        Tabs.tpisland:AddButton({
+            Title = "chainsaw",
+            Description = nil,
+            Callback = function()
+                tp(237, 33, -4302)
+            end
+        })
         
         Tabs.tpisland:AddButton({
             Title = "Jeju",
