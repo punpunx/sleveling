@@ -40,6 +40,20 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
 
 
     ----------------------- Function
+    function setspawn(x)
+        local args = {
+            [1] = {
+                [1] = {
+                    ["Event"] = "ChangeSpawn",
+                    ["Spawn"] = tostring(x)
+                },
+                [2] = "\n"
+            }
+        }
+
+        game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+    end
+
     function dgcheck()
         if workspace:FindFirstChild("__Main"):FindFirstChild("__World"):FindFirstChild("Room_1") then
             return true
@@ -663,17 +677,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             Title = "Solo World",
             Description = nil,
             Callback = function()
-                local args = {
-                    [1] = {
-                        [1] = {
-                            ["Event"] = "ChangeSpawn",
-                            ["Spawn"] = "SoloWorld"
-                        },
-                        [2] = "\n"
-                    }
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))          
+                setspawn(SoloWorld)        
             end
         })
         
@@ -681,17 +685,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             Title = "One Piece | Brum",
             Description = nil,
             Callback = function()
-                local args = {
-                    [1] = {
-                        [1] = {
-                            ["Event"] = "ChangeSpawn",
-                            ["Spawn"] = "OPWorld"
-                        },
-                        [2] = "\n"
-                    }
-                }
-        
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+                setspawn(OPWorld)
             end
         })
         
@@ -699,17 +693,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             Title = "Naruto | Grass",
             Description = nil,
             Callback = function()
-                local args = {
-                    [1] = {
-                        [1] = {
-                            ["Event"] = "ChangeSpawn",
-                            ["Spawn"] = "NarutoWorld"
-                        },
-                        [2] = "\n"
-                    }
-                }
-        
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+                setspawn(NarutoWorld)
             end
         })
         
@@ -717,17 +701,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             Title = "Bleach | ???",
             Description = nil,
             Callback = function()
-                local args = {
-                    [1] = {
-                        [1] = {
-                            ["Event"] = "ChangeSpawn",
-                            ["Spawn"] = "BleachWorld"
-                        },
-                        [2] = "\n"
-                    }
-                }
-        
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+                setspawn(BleachWorld)
             end
         })
         
@@ -735,20 +709,28 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             Title = "Black Clover | Lucky",
             Description = nil,
             Callback = function()
-                local args = {
-                    [1] = {
-                        [1] = {
-                            ["Event"] = "ChangeSpawn",
-                            ["Spawn"] = "BCWorld"
-                        },
-                        [2] = "\n"
-                    }
-                }
-        
-                game:GetService("ReplicatedStorage"):WaitForChild("BridgeNet2"):WaitForChild("dataRemoteEvent"):FireServer(unpack(args))
+                setspawn(BCWorld)
             end
         })
         
+        Tabs.setsp:AddButton({
+            Title = "Jojo",
+            Description = nil,
+            Callback = function()
+                setspawn(JojoWorld)
+            end
+        })
+
+
+        Tabs.setsp:AddButton({
+            Title = "Chainsaw man",
+            Description = nil,
+            Callback = function()
+                setspawn(ChainsawWorld)
+            end
+        })
+        
+
 
 
     end 
