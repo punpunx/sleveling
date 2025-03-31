@@ -434,7 +434,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
             while wait() do 
                 local dginfo =  player.LocalPlayer.PlayerGui.Hud.UpContanier.DungeonInfo.Text
                 if _G.drj and string.match(dginfo,"Ends") then
-                    print("aaaa")
+                    wait(4)
                     dungeonstart()
                 end
             end
