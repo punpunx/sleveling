@@ -104,6 +104,16 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         end
     end
 
+    function tweenpos(x,y,z)
+        if char and char.PrimaryPart then
+            local TweenService = game:GetService("TweenService")
+            local tweenInfo = TweenInfo.new(2)
+            local tween = TweenService:Create(char.PrimaryPart, tweenInfo, {CFrame = CFrame.new(x,y,z)})
+            tween:Play()
+            tween.Completed()
+        end
+    end
+
     function tphuman(x)
         char:SetPrimaryPartCFrame(x.CFrame)
     end
@@ -396,6 +406,9 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                                         tween(v.HumanoidRootPart,speed)
                                     end
                                 end
+                            else
+                                local partpos =  workspace.__Main.__World[newrooom].Exit
+                                tp(partpos.Position.X,partpos.Position.Y,partpos.Position.Z)
                             end
                         end
                     end)
@@ -439,11 +452,15 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                 end
             end
         end)
-
+        
+        newrooom = nil
         if dgcheck() then
             Options.autodung:SetValue(true)
             Options.dgrjj:SetValue(true)
-            end
+            workspace.__Main.__World.ChildAdded:Connect(function(child)
+                newrooom = child.Name
+            end)
+        end
 
     Tabs.dg:AddButton({
         Title = "Join Back",
