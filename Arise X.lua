@@ -201,7 +201,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                 if enemy:FindFirstChild("HumanoidRootPart") and enemy.HealthBar.Main.Bar.Amount.Text ~= "0 HP" then
                     local distance = (rootpart.Position - enemy.HumanoidRootPart.Position).Magnitude
         
-                    if distance < 8 then
+                    if distance < 15 then
                         wait(0.5)
                         
                         local args = {
@@ -223,7 +223,7 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                         repeat
                             wait()
                             distance = (rootpart.Position - enemy.HumanoidRootPart.Position).Magnitude
-                        until enemy.HealthBar.Main.Bar.Amount.Text == "0 HP" or distance > 8
+                        until enemy.HealthBar.Main.Bar.Amount.Text == "0 HP" or distance > 15
                     end
                 end
             end
