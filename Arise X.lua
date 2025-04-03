@@ -405,9 +405,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
                                         pettp(v.HumanoidRootPart)
                                         tween(v.HumanoidRootPart,speed)
                                     end
-                                else
-                                    local partpos =  workspace.__Main.__World[newrooom].Exit
-                                    tp(partpos.Position.X,partpos.Position.Y,partpos.Position.Z)
                                 end
                             end
                         end
@@ -457,9 +454,6 @@ if not game.CoreGui:FindFirstChild("ScreenGui") then
         if dgcheck() then
             Options.autodung:SetValue(true)
             Options.dgrjj:SetValue(true)
-            workspace.__Main.__World.ChildAdded:Connect(function(child)
-                newrooom = child.Name
-            end)
         end
 
     Tabs.dg:AddButton({
